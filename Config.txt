@@ -1,0 +1,82 @@
+switch>en
+switch#config t
+switch(config)#int range fa0/2-4
+switch(config-if)#switchport mode access
+switch(config-if)#switchport acces vlan 10
+switch(config-if)#do wr
+switch(config-if)#exit
+
+switch(config)#int range fa0/5-7
+switch(config-if)#switchport mode access
+switch(config-if)#switchport access vlan 20
+switch(config-if)#do wr
+switch(config-if)#exit
+
+switch(config)#int fa0/8-10
+switch(config-if)#switchport mode access
+switch(config-if)#switchport access vlan 30
+switch(config-if)#do wr
+switch(config-if)#exit
+
+switch(config)#int fa0/1
+switch(config-if)#switchport mode trunk
+switch(config-if)#do wr
+switch(config-if)#exit
+
+-----------------------------------------
+Inter-VLAN Setup
+
+Router>en
+router#config t
+router(config)#int g0/0
+router(config-if)#no shut
+router(config-if)#exit
+
+router(config)#int g0/0.10
+router(config-if)#encapsulation dot1Q 10
+router(config-if)#ip address 192.168.1.1 255.255.255.192
+router(config-if)#exit
+
+router(config)#int g0/0.20
+router(config-if)#encapsulation dot1Q 20
+router(config-if)#ip address 192.168.65.1 255.255.255.192
+router(config-if)#exit
+
+router(config)#int g0/0.30
+router(config-if)#encapsulation dot1Q 30
+router(config-if)#ip address 192.168.129.1 255.255.255.192
+router(config-if)#exit
+
+router(config)#service dhcp
+router(config)#ip dhcp pool it-pool
+router(dhcp-config)#network 192.168.1.0 255.255.255.192
+router(dhcp-config)#default-router 192.168.1.1
+router(dhcp-config)#dns-server 192.168.1.1
+router(dhcp-config)#domain-name it.com
+router(dhcp-config)#exit
+
+router(config)#ip dhcp pool hr-pool
+router(dhcp-config)#network 192.168.65.0 255.255.255.192
+router(dhcp-config)#default-router 192.168.65.1
+router(dhcp-config)#dns-server 192.168.65.1
+router(dhcp-config)#domain-name hr.com
+router(dhcp-config)#exit
+
+router(config)#ip dhcp pool cs-pool
+router(dhcp-config)#network 192.168.129.0 255.255.255.192
+router(dhcp-config)#default-router 192.168.129.1
+router(dhcp-config)#dns-server 192.168.129.1
+router(dhcp-config)#domain-name cs.com
+router(dhcp-config)#exit
+
+router(config)#do copy running-config startup-config
+
+
+
+
+
+
+
+
+
+

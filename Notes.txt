@@ -1,0 +1,22 @@
+Subnet 1 - VLAN10
+Network Address: 192.168.1.0
+Broadcast Address: 192.168.1.63
+First Usable Address: 192.168.1.1
+Last Usable Address: 192.168.1.62
+
+---------------------------------
+
+Subnet 2 - VLAN20
+Network Address: 192.168.1.64
+Broadcast Address: 192.168.1.127
+First Usable Address: 192.168.1.65
+Last Usable Address: 192.168.1.126
+
+---------------------------------
+
+Subnet 3 - VLAN30
+Network Address: 192.168.1.128
+Broadcast Address: 192.168.1.191
+First Usable Address: 192.168.1.129
+Last Usable Address: 192.168.1.190
+
